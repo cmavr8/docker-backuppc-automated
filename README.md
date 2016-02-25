@@ -1,7 +1,7 @@
 # Summary
-* BackupPC based on Ubuntu 14.04
-* Support for sending status mail using msmtp
-* Support for external settings, to allow automated container update/stop/rm/start
+* BackupPC based on Ubuntu 14.04.
+* Support for sending status mail using msmtp.
+* Support for external settings, to allow automated container update/stop/rm/start. Use a script [like this one](https://gist.github.com/cmavr8/4346368fca700d75356e).
 
 # How to use
 * Change the smtp host in msmtprc.
