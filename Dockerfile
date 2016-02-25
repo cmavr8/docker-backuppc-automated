@@ -1,6 +1,6 @@
-FROM ubuntu:14.04
+FROM ubuntu:trusty
 
-MAINTAINER ktwe
+MAINTAINER cmavr8
 
 VOLUME ["/var/lib/backuppc"]
 
@@ -16,7 +16,13 @@ RUN echo "backuppc backuppc/reconfigure-webserver multiselect apache2" | debconf
 
 RUN apt-get install -y backuppc apache2-utils
 
-RUN htpasswd -b /etc/backuppc/htpasswd backuppc password
+# Get password from build arguements
+ARG password
+# And use it to set backuppc user's password
+RUN htpasswd -b /etc/backuppc/htpasswd backuppc $password
+
+# Add user backuppc to sudoers to be able to access all files without a password
+RUN echo "backuppc ALL = NOPASSWD: /bin/tar" >> /etc/sudoers
 
 COPY supervisord.conf /etc/supervisord.conf
 COPY msmtprc /var/lib/backuppc/.msmtprc
