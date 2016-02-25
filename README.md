@@ -4,8 +4,8 @@
 * Support for external settings, to allow automated container update/stop/rm/start
 
 # How to use
-* Change the smtp host in msmtprc
-* Place config.pl and localhost.pl config files into <your-settings-folder>
-* Cd into the repository's directory
-* Run ```docker build --build-arg password=<your-password> .```
-* Run the image ```docker run -d -P -v /<your-backup-folder>:/var/lib/backuppc -v /<your-settings-folder>:/opt/backuppc_settings <image-id>```
+* Change the smtp host in msmtprc.
+* Place config.pl, localhost.pl and passwd config files into <your-settings-folder>. Passwd should contain just a password for the backuppc user.
+* Cd into the repository's directory.
+* Run ```docker build .```.
+* Run the image ```docker run -d -P -v /<your-backup-folder>:/var/lib/backuppc -v /<your-settings-folder>:/opt/backuppc_settings <image-id>```.

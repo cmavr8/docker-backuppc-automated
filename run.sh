@@ -12,6 +12,9 @@ then
 	chown backuppc:www-data /etc/backuppc/localhost.pl
 	chown backuppc:www-data /etc/backuppc/config.pl
 
+	# Get the password from the settings and use it to set backuppc user's password
+	htpasswd -b /etc/backuppc/htpasswd backuppc `cat /opt/backuppc_settings/passwd`
+
 	echo 1 > /firstrun
 fi
 
