@@ -10,6 +10,8 @@ RUN apt-get install -y python python-pip debconf-utils msmtp
 RUN pip install supervisor
 
 RUN echo "postfix postfix/main_mailer_type select Local only" | debconf-set-selections
+RUN echo "postfix postfix/mailname string backuppc.localdomain" | debconf-set-selections
+RUN echo "postfix postfix/relayhost string smtp.localdomain" | debconf-set-selections
 RUN echo "backuppc backuppc/configuration-note note" | debconf-set-selections
 RUN echo "backuppc backuppc/restart-webserver boolean true" | debconf-set-selections
 RUN echo "backuppc backuppc/reconfigure-webserver multiselect apache2" | debconf-set-selections
